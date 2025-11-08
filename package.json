@@ -3,5 +3,8 @@
     "react-bootstrap": "^2.10.10",
     "react-router-dom": "^7.9.5",
     "sass": "^1.93.3"
+  },
+   "scripts": {
+    "build": "cd view && npm install && npm run build"
   }
 }
