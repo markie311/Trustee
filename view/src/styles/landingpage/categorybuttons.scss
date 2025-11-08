@@ -1,0 +1,412 @@
+/* ========================================
+   CATEGORY BUTTONS STYLESHEET
+   Professional dropdown navigation
+   Blue & White theme with smooth animations
+   ======================================== */
+
+/* Main wrapper */
+.categorybuttons-wrapper {
+  position: relative;
+  width: 100%;
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  z-index: 1000;
+}
+
+/* Row container */
+#categorybuttons.categorybuttons-row {
+  position: relative;
+  height: auto;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 12px 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+/* Mobile view */
+#categorybuttons.categorybuttons-mobile {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  padding: 20px 15px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Button container */
+.categorybuttons-categorybuttoncontainer {
+  position: relative;
+  height: auto;
+  flex: 0 1 auto;
+  min-width: 90px;
+}
+
+.categorybuttons-categorybuttoncontainer.mobile {
+  width: 100%;
+}
+
+/* Category button base styles */
+.categorybuttons-categorybuttoncontainer-categorybutton {
+  background: linear-gradient(135deg, #1e90ff 0%, #4169e1 100%);
+  border: none;
+  border-radius: 8px;
+  height: 44px;
+  width: 100%;
+  min-width: 90px;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(30, 144, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  text-transform: capitalize;
+  padding: 0 12px;
+  white-space: nowrap;
+}
+
+/* Button hover effect */
+.categorybuttons-categorybuttoncontainer-categorybutton:hover {
+  background: linear-gradient(135deg, #4169e1 0%, #1e90ff 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(30, 144, 255, 0.3);
+}
+
+/* Active state */
+.categorybuttons-categorybuttoncontainer-categorybutton.active {
+  background: linear-gradient(135deg, #0066cc 0%, #0052a3 100%);
+  box-shadow: 0 4px 12px rgba(0, 102, 204, 0.4);
+}
+
+/* Button ripple effect */
+.categorybuttons-categorybuttoncontainer-categorybutton::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.categorybuttons-categorybuttoncontainer-categorybutton:active::before {
+  width: 300px;
+  height: 300px;
+}
+
+/* Dropdown arrow */
+.dropdown-arrow {
+  font-size: 9px;
+  transition: transform 0.3s ease;
+  display: inline-block;
+  margin-left: 2px;
+}
+
+.categorybuttons-categorybuttoncontainer-categorybutton.active .dropdown-arrow {
+  transform: rotate(180deg);
+}
+
+/* ========================================
+   DROPDOWN MENU STYLES
+   ======================================== */
+
+/* Dropdown overlay - covers entire area below nav */
+.category-dropdown-overlay {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  width: 100%;
+  padding-top: 8px;
+  z-index: 9999;
+  pointer-events: auto;
+}
+
+/* Dropdown container */
+.category-dropdown {
+  position: absolute;
+  top: 0;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  padding: 24px;
+  min-width: 450px;
+  max-width: 90vw;
+  z-index: 10000;
+  animation: dropdownSlideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(30, 144, 255, 0.1);
+}
+
+/* Dropdown animation */
+@keyframes dropdownSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+/* Dropdown arrow indicator */
+.category-dropdown::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 8px solid #ffffff;
+  filter: drop-shadow(0 -2px 2px rgba(0, 0, 0, 0.05));
+}
+
+/* Dropdown content grid */
+.category-dropdown-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 28px;
+}
+
+/* Dropdown column */
+.category-dropdown-column {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Column title */
+.category-dropdown-title {
+  color: #1e90ff;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin: 0 0 8px 0;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #e8f4ff;
+}
+
+/* Dropdown list */
+.category-dropdown-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+/* Dropdown item */
+.category-dropdown-item {
+  margin: 0;
+  padding: 0;
+}
+
+.category-dropdown-item a {
+  display: block;
+  color: #333333;
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Item hover effect */
+.category-dropdown-item a::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 3px;
+  height: 100%;
+  background: #1e90ff;
+  transform: scaleY(0);
+  transition: transform 0.2s ease;
+}
+
+.category-dropdown-item a:hover {
+  background: #f0f8ff;
+  color: #1e90ff;
+  padding-left: 16px;
+  font-weight: 600;
+}
+
+.category-dropdown-item a:hover::before {
+  transform: scaleY(1);
+}
+
+/* ========================================
+   RESPONSIVE DESIGN
+   ======================================== */
+
+/* Large tablets and small desktops */
+@media (max-width: 1200px) {
+  #categorybuttons.categorybuttons-row {
+    gap: 5px;
+    padding: 10px 12px;
+  }
+  
+  .categorybuttons-categorybuttoncontainer {
+    min-width: 85px;
+  }
+  
+  .categorybuttons-categorybuttoncontainer-categorybutton {
+    font-size: 12px;
+    height: 42px;
+    min-width: 85px;
+    padding: 0 10px;
+  }
+  
+  .category-dropdown {
+    min-width: 400px;
+    padding: 20px;
+  }
+  
+  .category-dropdown-content {
+    gap: 24px;
+  }
+}
+
+/* Tablet view */
+@media (max-width: 992px) {
+  #categorybuttons.categorybuttons-row {
+    gap: 4px;
+    padding: 8px 10px;
+  }
+  
+  .categorybuttons-categorybuttoncontainer {
+    min-width: 80px;
+  }
+  
+  .categorybuttons-categorybuttoncontainer-categorybutton {
+    font-size: 11px;
+    height: 40px;
+    min-width: 80px;
+    padding: 0 8px;
+  }
+  
+  .dropdown-arrow {
+    font-size: 8px;
+  }
+  
+  .category-dropdown {
+    min-width: 350px;
+    padding: 18px;
+  }
+  
+  .category-dropdown-content {
+    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  }
+  
+  .category-dropdown-title {
+    font-size: 12px;
+  }
+  
+  .category-dropdown-item a {
+    font-size: 13px;
+    padding: 7px 10px;
+  }
+}
+
+/* Small tablets */
+@media (max-width: 768px) {
+  #categorybuttons.categorybuttons-row {
+    gap: 6px;
+    padding: 12px 10px;
+  }
+  
+  .categorybuttons-categorybuttoncontainer {
+    flex: 0 1 calc(50% - 6px);
+    min-width: unset;
+  }
+  
+  .categorybuttons-categorybuttoncontainer-categorybutton {
+    font-size: 12px;
+    height: 42px;
+    min-width: unset;
+  }
+}
+
+/* Mobile view adjustments */
+@media (max-width: 576px) {
+  .dropdown-arrow {
+    display: none;
+  }
+  
+  #categorybuttons.categorybuttons-mobile {
+    padding: 15px 12px;
+    gap: 10px;
+  }
+  
+  .categorybuttons-categorybuttoncontainer-categorybutton {
+    height: 48px;
+    font-size: 14px;
+    border-radius: 10px;
+  }
+}
+
+/* Extra small mobile */
+@media (max-width: 400px) {
+  #categorybuttons.categorybuttons-mobile {
+    padding: 12px 10px;
+    gap: 8px;
+  }
+  
+  .categorybuttons-categorybuttoncontainer-categorybutton {
+    height: 44px;
+    font-size: 13px;
+  }
+}
+
+/* ========================================
+   ACCESSIBILITY ENHANCEMENTS
+   ======================================== */
+
+.categorybuttons-categorybuttoncontainer-categorybutton:focus {
+  outline: 3px solid rgba(30, 144, 255, 0.4);
+  outline-offset: 2px;
+}
+
+.category-dropdown-item a:focus {
+  outline: 2px solid rgba(30, 144, 255, 0.4);
+  outline-offset: 2px;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .categorybuttons-categorybuttoncontainer-categorybutton,
+  .dropdown-arrow,
+  .category-dropdown-item a,
+  .category-dropdown {
+    transition: none;
+    animation: none;
+  }
+}
+
+/* Prevent layout shift */
+* {
+  box-sizing: border-box;
+}
